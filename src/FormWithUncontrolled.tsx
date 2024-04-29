@@ -13,14 +13,18 @@ const FormWithUncontrolled = () => {
   };
 
   const handleChangeForm = (event: React.ChangeEvent<HTMLFormElement>) => {
-    setDisabled(!event.currentTarget.reportValidity());
+    // setDisabled(!event.currentTarget.reportValidity());
   };
+
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDisabled(!event.currentTarget.checkValidity());
+  }
 
   return (
     <form className="form" onSubmit={handleSubmit} onChange={handleChangeForm}>
       <label>
         Name: <span className="req">*</span>
-        <input type="text" name="name" required />
+        <input type="text" name="name" required onChange={handleChangeInput} />
       </label>
       <label>
         Age:
